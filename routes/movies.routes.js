@@ -54,8 +54,8 @@ router.get("/:id/delete", async (req, res, next) => {
 router.get("/:id/update", async (req, res, next) => {
   try {
     const myMovie = await Movies.findById(req.params.id);
-
-    res.render("/movies/edit-movies", { myMovie });
+    const allcelebrities = await Celebrity.find();
+    res.render("movies/edit-movies", { myMovie, allcelebrities });
   } catch (error) {
     next(error);
   }
